@@ -1,10 +1,12 @@
 package org.example.parklib;
 
+import org.example.parklib.car.Car;
+import org.example.parklib.car.CarTypeParkingFilter;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.example.parklib.CarType.ELECTRIC_50KW;
-import static org.example.parklib.CarType.GAS;
+import static org.example.parklib.car.CarType.ELECTRIC_50KW;
+import static org.example.parklib.car.CarType.GAS;
 
 public class CarTypeParkingFilterTest {
 

@@ -1,9 +1,10 @@
 package org.example.parklib;
 
+import org.example.parklib.car.Car;
+import org.example.parklib.car.CarType;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 public class ParkingSlotTest {
 
