@@ -71,7 +71,7 @@ public class FreeSundayPricingStrategy implements PricingStrategy {
 ````
 You could then use it in your parking implementation with `new Parking(new FreeSundayPricingStrategy(), new ParkingSlot(new CarTypeParkingFilter(GAS)))`
 
-### New Parking slot filter
+#### New Parking slot filter
 You can create new parking slot filters, permitting new rules for allocating slots.
 For example, if you want a slot that is available for electric cars, regardless of their charging rate, you could implement it as:
 ```java
