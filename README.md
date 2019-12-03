@@ -10,15 +10,27 @@ To build run `mvn clean install`
 
 ## Usage
 ### Adding to a project
-To Add to your project, add to your pom.xml:
+To Add to your project, add the jitpack repository:
+```xml
+<repositories>
+    <repository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
+    </repository>
+</repositories>
+```
+
+Then, add to your pom.xml:
 ```xml
 <dependency>
-  <groupId>org.example</groupId>
-  <artifactId>parklib</artifactId>
-  <version>1.0-snapshot</version>
+    <groupId>com.github.h4o</groupId>
+    <artifactId>parking-lib</artifactId>
+    <version>1.0</version>
 </dependency>
 ```
 And then run `mvn clean install`
+### Documentation
+The javadoc is available [here](https://javadoc.jitpack.io/com/github/h4o/parking-lib/1.0/javadoc/)
 ### Simple usage
 Example build a parking that is free, with one slot for a GAS car
 ````java
