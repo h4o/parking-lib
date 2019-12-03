@@ -86,3 +86,7 @@ public class ElectricCarFilter implements ParkingFilter {
 You then could use when defining slots with ``new ParkingSlot(new ElectricCarFilter())``
 ## Assumptions
 * The implementation is in memory
+* This library is not meant to be used in a distributed environment (ex: with webservices) as we are using java objects and not references to them via ids
+* As a lot of parking problems, this is meant to be multithreaded. As a result park() and free() are synchronized and the occupied boolean is volatile
+## Requirements
+We only require java 1.8. To import this lib either build it or add it to your maven/gradle configuration
