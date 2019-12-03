@@ -86,7 +86,28 @@ public class ElectricCarFilter implements ParkingFilter {
 You then could use when defining slots with ``new ParkingSlot(new ElectricCarFilter())``
 ## Assumptions
 * The implementation is in memory
-* This library is not meant to be used in a distributed environment (ex: with webservices) as we are using java objects and not references to them via ids
-* As a lot of parking problems, this is meant to be multithreaded. As a result park() and free() are synchronized and the occupied boolean is volatile
+* This library is not meant to be used in a distributed environment (ex: as a webservice backend) 
+* As a lot of parking problems, this is meant to be thread safe. As a result park() and free() are synchronized and the occupied boolean is volatile
+* We need to use little to no dependencies as we are building a library
+## Design points 
+### Dependencies
+Since we are building a library, every runtime dependency we add is a dependency our user will have to include (either directly, or in our jar if we shade it). 
+When providing a library, having the minimal number of dependencies is a desirable feature as we don't force our users to include them.
+I built this library using only dependencies for testing and no dependency for the final jar.
+### Money
+The money has euros as a fixed currency. It uses BigDecimal to store it's amount.
+The choice of BigDecimal explain itself by the need for precision when dealing with money.
+Nobody wants to lose money because an addition or a multiplication was done using floats and the amounts are false.
+Since I wanted to minimize dependencies, I had two choices either use long and store the value as cents or use BigDecimal.
+I chose BigDecimal as it does not have the risk of forgetting to scale the price in cents, which would result in errors like under or over charging.
+### Extensibility
+We provide way to extend both the pricing strategy (via PricingStrategy) and the way parking slots are attributed (via ParkingFilter).
+### Optional usage
+In this library we chose to use Optional as the return types of methods that can fail. 
+The reason for using Optional is because the method might fail and this is normal for the domain.
+Optional permits us to communicate the fact that there is no result without returning a null or throwing an Exception.
+Returning a null gives us a risk for unexpected NullPointerException as users might not check for null and nothing reminds them of the possibility.
+Throwing an exception forces the user to handle it or declare it. It makes it an exceptional case that is less elegant to handle and does not map well to our domain.
+Optional is a way to strongly suggest users to check if we did return an object while keeping a more elegant API and communicating that failures may happen and are normal.
 ## Requirements
-We only require java 1.8. To import this lib either build it or add it to your maven/gradle configuration
+You need java 1.8. To import this lib either build it or add it to your maven/gradle configuration
