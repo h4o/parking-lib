@@ -12,13 +12,6 @@
         <junit-jupiter.version>5.5.2</junit-jupiter.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-    <distributionManagement>
-        <repository>
-            <id>github</id>
-            <name>GitHub OWNER Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/h4o/parking-lib</url>
-        </repository>
-    </distributionManagement>
     <dependencies>
 
         <dependency>
